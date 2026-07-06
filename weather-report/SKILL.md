@@ -1,6 +1,6 @@
 ---
 name: weather-report
-description: Get current weather conditions for any city/location worldwide using wttr.in (free, no API key). Run the script directly — python ${HERMES_SKILL_DIR}/scripts/weather.py "London" for clean formatted output.
+description: Get current weather conditions for any city/location worldwide using wttr.in (free, no API key). Run: python C:/Users/homeu/AppData/Local/hermes/skills/research/weather-report/scripts/tools.py "London"
 category: research
 priority: 100
 triggers_regex:
@@ -9,6 +9,7 @@ triggers_regex:
   - "what.*(?:is|'s).*weather.*"
 scripts:
   - scripts/weather.py
+  - scripts/tools.py
 metadata:
   hermes:
     tags: [weather, forecast, wttr]
@@ -29,12 +30,15 @@ Fetches current weather for any city using wttr.in — free, no API key, no sign
 
 ## Usage
 
-Run the script directly with a location:
-
 ```bash
-python ${HERMES_SKILL_DIR}/scripts/weather.py "London"
-python ${HERMES_SKILL_DIR}/scripts/weather.py "New York"
-python ${HERMES_SKILL_DIR}/scripts/weather.py "Tokyo"
+# tools.py wrapper (preferred — resolves its own path from any cwd):
+python C:/Users/homeu/AppData/Local/hermes/skills/research/weather-report/scripts/tools.py "London"
+
+# Direct:
+python C:/Users/homeu/AppData/Local/hermes/skills/research/weather-report/scripts/weather.py "London"
+
+# Via curl (fastest, no Python):
+curl "wttr.in/London?format=j1" | jq '.current_condition[0]'
 ```
 
 Output:
@@ -49,10 +53,21 @@ Visibility: 10 km
 UV Index: 5
 ```
 
-Or via curl (even faster, no Python needed):
-```bash
-curl "wttr.in/London?format=j1" | jq '.current_condition[0]'
+## Windows Path Quirk (CRITICAL)
+
+From git-bash, **do NOT use** `/c/Users/...` prefix with Windows `python.exe` — it causes a double `C:\c\` prefix error.
+
+**WRONG** (double prefix):
 ```
+python /c/Users/homeu/.../tools.py "London"  # → C:\c\Users\homeu\... (fails)
+```
+
+**RIGHT** (use forward slashes with drive letter):
+```
+python C:/Users/homeu/.../tools.py "London"   # works
+```
+
+The Hermes agent knows the correct path from skill metadata — just use the absolute path with `C:/` prefix.
 
 ## Prerequisites
 
