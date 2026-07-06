@@ -1,6 +1,6 @@
 ---
 name: weather-report
-description: Get current weather conditions for any city/location worldwide using wttr.in (free, no API key). Run the script directly like stock-price — python scripts/weather.py "London" for clean formatted output.
+description: Get current weather conditions for any city/location worldwide using wttr.in (free, no API key). Run the script directly — python ${HERMES_SKILL_DIR}/scripts/weather.py "London" for clean formatted output.
 category: research
 priority: 100
 triggers_regex:
@@ -32,9 +32,9 @@ Fetches current weather for any city using wttr.in — free, no API key, no sign
 Run the script directly with a location:
 
 ```bash
-python skills/weather-report/scripts/weather.py "London"
-python skills/weather-report/scripts/weather.py "New York"
-python skills/weather-report/scripts/weather.py "Tokyo"
+python ${HERMES_SKILL_DIR}/scripts/weather.py "London"
+python ${HERMES_SKILL_DIR}/scripts/weather.py "New York"
+python ${HERMES_SKILL_DIR}/scripts/weather.py "Tokyo"
 ```
 
 Output:

@@ -33,12 +33,12 @@ get_stock_price("AAPL")  # {"price": 214.37, "currency": "USD"}
 
 Or run the script directly (clean formatted output):
 ```bash
-python skills/stock-price/scripts/tools.py AAPL
+python ${HERMES_SKILL_DIR}/scripts/tools.py AAPL
 ```
 
 The script returns price, market cap, day high, and day low:
 ```bash
-python skills/stock-price/scripts/tools.py AAPL
+python ${HERMES_SKILL_DIR}/scripts/tools.py AAPL
 ```
 
 ## Config Settings

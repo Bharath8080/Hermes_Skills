@@ -43,7 +43,7 @@ Path B (Fallback):  User → Agent → Composio MCP → Apify Actor → Structur
 ### Flights — Path B (Apify Actor)
 ```bash
 # 1. Generate Apify input JSON
-python scripts/travel_search.py apify flights VTZ COK 2026-07-15 2026-07-22 --adults 2
+python ${HERMES_SKILL_DIR}/scripts/travel_search.py apify flights VTZ COK 2026-07-15 2026-07-22 --adults 2
 
 # 2. Ask the agent:
 #    "Run Apify flight scrape for VTZ → COK 2026-07-15 → 2026-07-22"
@@ -52,7 +52,7 @@ python scripts/travel_search.py apify flights VTZ COK 2026-07-15 2026-07-22 --ad
 ### Hotels
 ```bash
 # 1. Generate Apify input JSON
-python scripts/travel_search.py apify hotels Kochi 2026-07-15 2026-07-22 --adults 2
+python ${HERMES_SKILL_DIR}/scripts/travel_search.py apify hotels Kochi 2026-07-15 2026-07-22 --adults 2
 
 # 2. Ask the agent:
 #    "Run Apify hotel scrape for Kochi 2026-07-15 → 2026-07-22"
@@ -60,9 +60,9 @@ python scripts/travel_search.py apify hotels Kochi 2026-07-15 2026-07-22 --adult
 
 ### URL Builder (no API needed — open in browser)
 ```bash
-python scripts/travel_search.py url skyscanner VTZ COK 260715 260722 --adults 2 --children 8
-python scripts/travel_search.py url makemytrip VTZ COK 15/07/2026 22/07/2026 --adults 2
-python scripts/travel_search.py url kayak VTZ COK 2026-07-15 2026-07-22 --direct
+python ${HERMES_SKILL_DIR}/scripts/travel_search.py url skyscanner VTZ COK 260715 260722 --adults 2 --children 8
+python ${HERMES_SKILL_DIR}/scripts/travel_search.py url makemytrip VTZ COK 15/07/2026 22/07/2026 --adults 2
+python ${HERMES_SKILL_DIR}/scripts/travel_search.py url kayak VTZ COK 2026-07-15 2026-07-22 --direct
 ```
 
 ## Apify Actors
